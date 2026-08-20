@@ -1,0 +1,40 @@
+# Streamlit
+streamlit>=1.35.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# HTTP requests
+requests>=2.32.0
+
+# YouTube / audio downloading
+yt-dlp>=2024.4.9
+pydub>=0.25.1
+ffmpeg-python>=0.2.0
+
+# Speech-to-text
+openai-whisper>=20231117
+torch>=2.2.0
+torchaudio>=2.2.0
+
+# LangChain
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-community>=0.2.0
+langchain-text-splitters>=0.2.0
+langchain-mistralai>=0.1.0
+
+# Mistral AI
+mistralai>=0.4.0
+
+# RAG / Vector Database
+chromadb>=0.5.0
+langchain-chroma>=0.1.0
+
+# Embeddings
+sentence-transformers>=3.0.0
+huggingface-hub>=0.23.0
+
+# Utilities
+numpy>=1.26.0
+tqdm>=4.66.0
