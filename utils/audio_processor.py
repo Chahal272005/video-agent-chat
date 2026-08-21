@@ -6,26 +6,38 @@ load_dotenv()
 DOWNLOAD_DIR = 'downloads'
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
-def download_youtube_audio(url: str)->str:
-    output_path = os.path.join(DOWNLOAD_DIR, "%(title)s.%(ext)s")
+def download_youtube_audio(url: str) -> str:
+    output_path = os.path.join(DOWNLOAD_DIR, "%(id)s.%(ext)s")
     ydl_opts = {
-    'format': 'bestaudio/best',
-    'outtmpl': output_path,
-    'ffmpeg_location': os.getenv("FFMPEG_PATH"),
-    'postprocessors': [
-        {
-            'key': "FFmpegExtractAudio",
-            'preferredcodec': "wav",
-            "preferredquality": "192",
-        }
-    ],
-    "quiet": True,
-}
+        'format': 'bestaudio/best',
+        'outtmpl': output_path,
+        'ffmpeg_location': os.getenv("FFMPEG_PATH"),
+        'postprocessors': [
+            {
+                'key': "FFmpegExtractAudio",
+                'preferredcodec': "wav",
+                "preferredquality": "192",
+            }
+        ],
+        'extractor_args': {
+            'youtube': {
+                'player_client': ['android', 'web', 'ios']
+            }
+        },
+        'http_headers': {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
+        },
+        'quiet': True,
+        'no_warnings': True,
+        'nocheckcertificate': True,
+    }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
-        filename = ydl.prepare_filename(info).replace(".webm", ".wav").replace(".m4a", ".wav")
-    return filename
+        filename = ydl.prepare_filename(info)
+        wav_filename = os.path.splitext(filename)[0] + ".wav"
+        
+    return wav_filename
 
 
 
