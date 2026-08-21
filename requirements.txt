@@ -8,9 +8,9 @@ python-dotenv>=1.0.0
 requests>=2.32.0
 
 # YouTube / audio downloading
-yt-dlp>=2024.4.9
-pydub>=0.25.1
-ffmpeg-python>=0.2.0
+yt-dlp[default]==2026.7.4
+pydub==0.25.1
+ffmpeg-python==0.2.0
 
 # Speech-to-text
 openai-whisper>=20231117
