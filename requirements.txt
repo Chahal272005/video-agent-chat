@@ -14,8 +14,9 @@ ffmpeg-python>=0.2.0
 
 # Speech-to-text
 openai-whisper>=20231117
-torch>=2.2.0
-torchaudio>=2.2.0
+torch==2.6.0
+torchvision==0.21.0
+torchaudio==2.6.0
 
 # LangChain
 langchain>=0.2.0
